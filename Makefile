@@ -6,7 +6,7 @@
 #    By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/11 17:36:38 by hcorrea-          #+#    #+#              #
-#    Updated: 2022/09/12 16:46:33 by hcorrea-         ###   ########.fr        #
+#    Updated: 2022/10/25 09:03:58 by hcorrea-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,26 +16,29 @@ SUBDIRS		= libc_func add_func extra_func
 BONUSDIR	= bonus
 
 SRC			= $(foreach dir, $(SUBDIRS), $(wildcard $(dir)/*.c))
-BONUS		= $(foreach dir, $(BONUSDIR), $(wildcard *.c))
+BONUS		= $(foreach dir, $(BONUSDIR), $(wildcard $(dir)/*.c))
 
 CC 			= gcc
-CFLAGS		= -Wall -Werror -Wextra -I .
+CFLAGS		= -Wall -Werror -Wextra -I. -c
 
 RM			= /bin/rm -f
 
 
 all: 		$(NAME)
 
-$(NAME):	$(SRC:=.o)
-			ar rc $(NAME) $(SRC:=.o)
-						
+$(NAME):	$(SRC:.c=.o)
+			ar -rcs $(NAME) $(SRC:.c=.o)
+
+.c.o:
+			$(CC) $(CFLAGS) $< -o $(<:.c=.o)
+
 clean:
-			$(RM) $(SRC:=.o) $(BONUS:=.o)
+			$(RM) $(SRC:.c=.o) $(BONUS:.c=.o)
 	
 fclean: 	clean
-			$(RM) all
+			$(RM) all $(NAME)
 		
 re:			fclean all
 
-bonus: 		$(SRC:=.o) $(BONUS:=.o)
-			ar rc all $(SRC:=.o) $(BONUS:=.o)
+bonus: 		$(SRC:.c=.o) $(BONUS:.c=.o)
+			ar -rcs all $(SRC:.c=.o) $(BONUS:.c=.o)
