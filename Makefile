@@ -3,42 +3,41 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+         #
+#    By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/11 17:36:38 by hcorrea-          #+#    #+#              #
-#    Updated: 2022/10/25 09:03:58 by hcorrea-         ###   ########.fr        #
+#    Updated: 2022/11/05 05:05:03 by hcorrea-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= libft.a
+NAME 	= 	libft.a
+SRC 	= 	ft_memset ft_bzero ft_memcpy ft_memmove ft_memchr\
+			ft_memcmp ft_strlen ft_strlcpy ft_strlcat ft_strchr ft_strrchr\
+			ft_substr ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd\
+			ft_strnstr ft_strncmp ft_atoi ft_isalpha ft_isdigit ft_isalnum\
+			ft_isascii ft_isprint ft_toupper ft_tolower ft_calloc ft_strdup\
+			ft_strjoin ft_strtrim ft_strmapi ft_striteri ft_itoa ft_split\
 
-SUBDIRS		= libc_func add_func extra_func
-BONUSDIR	= bonus
+BONUS 	= 	ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back\
+			ft_lstdelone ft_lstclear ft_lstiter ft_lstmap\
 
-SRC			= $(foreach dir, $(SUBDIRS), $(wildcard $(dir)/*.c))
-BONUS		= $(foreach dir, $(BONUSDIR), $(wildcard $(dir)/*.c))
+CC 		=	gcc
+RM 		=	rm -rf
+CFLAGS 	= 	-Wall -Werror -Wextra -I.
 
-CC 			= gcc
-CFLAGS		= -Wall -Werror -Wextra -I. -c
+all:		$(NAME)
 
-RM			= /bin/rm -f
-
-
-all: 		$(NAME)
-
-$(NAME):	$(SRC:.c=.o)
-			ar -rcs $(NAME) $(SRC:.c=.o)
-
-.c.o:
-			$(CC) $(CFLAGS) $< -o $(<:.c=.o)
-
+$(NAME): 	$(SRC:=.o)
+			ar rc $(NAME) $(SRC:=.o)
 clean:
-			$(RM) $(SRC:.c=.o) $(BONUS:.c=.o)
+			$(RM)	$(SRC:=.o) $(BONUS:=.o)
 	
 fclean: 	clean
-			$(RM) all $(NAME)
-		
-re:			fclean all
+			$(RM) $(NAME)
 
-bonus: 		$(SRC:.c=.o) $(BONUS:.c=.o)
-			ar -rcs all $(SRC:.c=.o) $(BONUS:.c=.o)
+re:			fclean	all
+
+bonus:		$(SRC:=.o)	$(BONUS:=.o)
+			ar rc $(NAME) $(SRC:=.o)	$(BONUS:=.o)
+
+.PHONY:		all clean fclean re bonus

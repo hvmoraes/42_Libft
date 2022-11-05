@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:44:54 by hcorrea-          #+#    #+#             */
-/*   Updated: 2022/10/24 12:59:38 by hcorrea-         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:55:18 by hcorrea-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 /*						PART I - LIBC FUNCTIONS						*/
 
 void			*ft_memset(void *b, int c, size_t len);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
-void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t len);
 void			*ft_memchr(const void *str, int c, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -34,6 +34,7 @@ char			*ft_strnstr(const char *str, const char *search,
 					size_t len);
 int				ft_strncmp(const char *s1, const char *s2,
 					size_t n);
+void			ft_striteri(char *str, void (*f)(unsigned int, char *));
 
 void			ft_bzero(void *s, size_t n);
 int				ft_atoi(const char *str);
@@ -83,8 +84,5 @@ void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
-
-/*						EXTRA FUNTIONS						*/
-void			ft_putstr(char *str);
 
 #endif
