@@ -6,11 +6,14 @@
 #    By: hcorrea- <hcorrea-@student.42lisboa.pt>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/11 17:36:38 by hcorrea-          #+#    #+#              #
-#    Updated: 2022/11/05 05:05:03 by hcorrea-         ###   ########.fr        #
+#    Updated: 2022/11/08 15:26:54 by hcorrea-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+CFLAGS = -Wall -Wextra -Werror
+
 NAME 	= 	libft.a
+
 SRC 	= 	ft_memset ft_bzero ft_memcpy ft_memmove ft_memchr\
 			ft_memcmp ft_strlen ft_strlcpy ft_strlcat ft_strchr ft_strrchr\
 			ft_substr ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd\
@@ -21,14 +24,13 @@ SRC 	= 	ft_memset ft_bzero ft_memcpy ft_memmove ft_memchr\
 BONUS 	= 	ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back\
 			ft_lstdelone ft_lstclear ft_lstiter ft_lstmap\
 
-CC 		=	gcc
 RM 		=	rm -rf
-CFLAGS 	= 	-Wall -Werror -Wextra -I.
 
 all:		$(NAME)
 
 $(NAME): 	$(SRC:=.o)
-			ar rc $(NAME) $(SRC:=.o)
+			ar -rcs $(NAME) $(SRC:=.o)
+			
 clean:
 			$(RM)	$(SRC:=.o) $(BONUS:=.o)
 	
