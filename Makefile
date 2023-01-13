@@ -6,7 +6,7 @@
 #    By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/11 17:36:38 by hcorrea-          #+#    #+#              #
-#    Updated: 2023/01/13 11:27:49 by hcorrea-         ###   ########.fr        #
+#    Updated: 2023/01/13 11:48:12 by hcorrea-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ fclean: 		clean
 
 re:				fclean	all
 
-bonus:			$(OBJ_B)
+bonus:			$(NAME) $(OBJ_B)
 				@echo "$(YELLOW)Compiling bonus...$(END)"
 				@ar rcs $(NAME) $(OBJ_B)
 				@echo "$(GREEN)Libft bonus succesfully compiled!$(END)"
