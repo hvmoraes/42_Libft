@@ -6,7 +6,7 @@
 #    By: hcorrea- <hcorrea-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/11 17:36:38 by hcorrea-          #+#    #+#              #
-#    Updated: 2023/01/13 11:48:12 by hcorrea-         ###   ########.fr        #
+#    Updated: 2023/01/13 11:53:15 by hcorrea-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ OBJF	=	.cache_exists
 all:			$(NAME)
 
 $(NAME): 		$(OBJ)
-				@echo "$(YELLOW)Compiling...$(END)"
+				@echo "$(YELLOW)Compiling Libft...$(END)"
 				@ar rcs $(NAME) $(OBJ)
 				@echo "$(GREEN)Libft succesfully compiled!$(END)"
 
@@ -65,7 +65,7 @@ fclean: 		clean
 re:				fclean	all
 
 bonus:			$(NAME) $(OBJ_B)
-				@echo "$(YELLOW)Compiling bonus...$(END)"
+				@echo "$(YELLOW)Compiling Libft bonus...$(END)"
 				@ar rcs $(NAME) $(OBJ_B)
 				@echo "$(GREEN)Libft bonus succesfully compiled!$(END)"
 
